@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500; // Define o peso padrão, pode ser ajustado conforme necessário
+    font-weight: 500;
   }
 `;
 

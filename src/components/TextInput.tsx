@@ -7,7 +7,6 @@ import List from "./List";
 
 interface Message {
   content: string;
-  email?: string;
   timestamp: string;
 }
 
