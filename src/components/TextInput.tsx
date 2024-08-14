@@ -35,13 +35,18 @@ const Label =
   { isLabelActive: boolean } >
   `
   position: absolute;
-  top: ${({ isLabelActive }) => (isLabelActive ? "55px" : "50%")};
-  left: ${({ isLabelActive }) => (isLabelActive ? "35px" : "10px")};
+  top: ${({ isLabelActive }) => (isLabelActive ? "73px" : "50%")};
+  left: ${({ isLabelActive }) => (isLabelActive ? "370px" : "10px")};
   transform: translateY(-50%);
   font-size: ${({ isLabelActive }) => (isLabelActive ? "12px" : "16px")};
   color: #999;
   pointer-events: none;
   transition: all 0.2s ease;
+
+  @media (max-width: 768px) {
+    left: ${({ isLabelActive }) => (isLabelActive ? "45px" : "8px")};
+    font-size: ${({ isLabelActive }) => (isLabelActive ? "13px" : "16px")};
+  }
 `;
 
 const TitleText = styled.p`
@@ -50,7 +55,14 @@ const TitleText = styled.p`
   font-weight: 600;
 `;
 
-const ContainerInput = styled.div`margin: 5%;`;
+const ContainerInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+`;
 
 const ContainerList = styled.div`
   background-color: #f2f2f2;

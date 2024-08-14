@@ -18,7 +18,7 @@ const StyledButton =
   border-radius: 10px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 358px;
   margin-top: 20px;
   height: 70px;
 

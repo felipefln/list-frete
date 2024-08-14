@@ -14,6 +14,8 @@ interface IListProps {
 const ContainerList = styled.div``;
 
 const TitleList = styled.p`
+  display: flex;
+  justify-content: center;
   color: #4d4d4d;
   font-size: 20px;
   font-weight: 700;
@@ -21,7 +23,6 @@ const TitleList = styled.p`
 `;
 
 const BodyList = styled.div`
-  margin: 5%;
   max-height: 500px;
   overflow-y: auto;
   border-radius: 8px;
