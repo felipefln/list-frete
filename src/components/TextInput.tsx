@@ -61,11 +61,11 @@ const TextInput: React.FC = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [msgs, setMsgs] = useState<Message[]>([]);
+  const [success, setSuccess] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(!!inputValue);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setInputValue(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
   const isLabelActive = isFocused || !!inputValue;
   const isButtonDisabled = inputValue.trim() === "";
@@ -77,23 +77,28 @@ const TextInput: React.FC = () => {
         content: content,
         timestamp: timestamp
       });
+      setSuccess(true);
+      setInputValue("");
       console.log("Mensagem adicionada com sucesso!");
     } catch (e) {
       console.error("Erro ao adicionar mensagem: ", e);
     }
   };
 
-  useEffect(() => {
-    const fetchMessages = async () => {
-      const querySnapshot = await getDocs(collection(db, "messages"));
-      const messagesList: Message[] = querySnapshot.docs.map(
-        (doc: DocumentData) => doc.data() as Message
-      );
-      setMsgs(messagesList);
-    };
+  useEffect(
+    () => {
+      const fetchMessages = async () => {
+        const querySnapshot = await getDocs(collection(db, "messages"));
+        const messagesList: Message[] = querySnapshot.docs.map(
+          (doc: DocumentData) => doc.data() as Message
+        );
+        setMsgs(messagesList);
+      };
 
-    fetchMessages();
-  }, []);
+      fetchMessages();
+    },
+    [success]
+  );
 
   return (
     <Container>
